@@ -1,0 +1,23 @@
+{
+  "name": "matthv/laravel-atos-sips-gateway",
+  "description": "Laravel Atos SIPS",
+  "require": {
+    "php": "^7.4|^8.0",
+    "laravel/framework": "^7.0|^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Matthv\\AtosSipsGateway\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Matthv\\AtosSipsGateway\\Providers\\AtosSipsServiceProvider"
+      ]
+    }
+  },
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
