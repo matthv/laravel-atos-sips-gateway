@@ -38,7 +38,7 @@ You should put the following variables into your .env file :
 - ATOS_TEST_URL : bank test url. Defaults to `https://payment-webinit-mercanet.test.sips-atos.com/paymentInit`. 
   
 You can see all configuration options in `config/atos.php`.
-####Example using Mercanet BNP Paribas :
+#### Example using Mercanet BNP Paribas :
 ```
 ATOS_TEST=true
 ATOS_MERCHANT_ID=211000021310001
@@ -51,7 +51,7 @@ Documentation : [First-step](https://documentation.mercanet.bnpparibas.net/index
 ---
 ## Usage
 
-###1. Prepare the form payment  
+### 1. Prepare the form payment  
  
 To make a basic payment, you will need at least 2 information :
 - paymentNumber is used to identify individual transactions. This corresponds to Atos `transactionReference`.
@@ -81,14 +81,14 @@ return app()->make(AtosAuthorization::class)
             ->paymentView();
 ```
 
-###2. Return & callback routes
+### 2. Return & callback routes
 
 You need to set 2 routes names in `config/atos.php`  :
 - `customer_return_route_name` : allows your users to return to your site whenever the payment is successful or cancelled. Defaults to `atos.return`.
 - `customer_callback_route_name` : route called back by the bank on transaction completion. Defaults to `atos.callback`.
 
 
-###3. Callback transaction handling
+### 3. Callback transaction handling
 
 This code should be run in controller of the callback route.
 
@@ -112,10 +112,10 @@ try {
 }
 ```
 
-### Licence
+## Licence
 
 This package is licenced under the [MIT license](http://opensource.org/licenses/MIT)
 
-### Thanks
+## Thanks
 
 This package is inspired by [devpark/laravel-paybox-gateway](https://github.com/devpark/laravel-paybox-gateway).
