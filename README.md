@@ -2,7 +2,7 @@
 
 ---
 
-This package makes easily integration with the Atos SIPS payment system, which is widely used by the french banks under different names: Mercanet, E-Transactions, Citelis etc.
+This package makes easily integration with the Atos SIPS payment system, which is widely used by the french banks under different names: Mercanet, E-Transactions, Citelis, Sogenactif etc.
 
 **Be aware this package only supports the version 2 of Atos SIPS.**
 
@@ -61,7 +61,7 @@ To make a basic payment, you will need at least 2 information :
 
 
 ```php 
-return app()->make(AtosAuthorization::class)
+return app()->make(AtosSipsAuthorization::class)
             ->setPaymentNumber('AABBAA'.rand(1000,9999))
             ->setAmount(1000)
             ->paymentView();
@@ -69,12 +69,13 @@ return app()->make(AtosAuthorization::class)
 You can add Atos SIPS custom fields with the `setCustomParameter` method.
 
 ```php
-return app()->make(AtosAuthorization::class)
+return app()->make(AtosSipsAuthorization::class)
             ->setPaymentNumber('AABBAA'.rand(1000,9999))
             ->setCustomParameters(
                 [
                     'customerEmail' => 'j.doe@customer-email.com',
                     'customerId' => 123,
+                    'orderId' => 456,
                 ]
             )
             ->setAmount(1000)
@@ -83,9 +84,11 @@ return app()->make(AtosAuthorization::class)
 
 ### 2. Return & callback routes
 
-You need to set 2 routes names in `config/atos.php`  :
+You need to set 2 routes names in `config/atos.php`, each with `post` method :
 - `customer_return_route_name` : allows your users to return to your site whenever the payment is successful or cancelled. Defaults to `atos.return`.
 - `customer_callback_route_name` : route called back by the bank on transaction completion. Defaults to `atos.callback`.
+
+You may need to exclude the routes from your VerifyCsrfToken middleware.
 
 
 ### 3. Callback transaction handling
