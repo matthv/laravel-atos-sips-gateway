@@ -187,7 +187,7 @@ class AtosSipsAuthorization
      *
      * @return View
      */
-    public function paymentView(?string $viewName): View
+    public function paymentView(?string $viewName = null): View
     {
         $data = $this->getData();
         if (null === $viewName) {
